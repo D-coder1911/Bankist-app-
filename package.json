@@ -1,14 +1,15 @@
 {
   "name": "bankistaappexam",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "**BankirApp** — bu foydalanuvchilarga hisoblar, tranzaksiyalar, qarzlar, investitsiyalar va kartalar bilan ishlash imkonini beruvchi qulay va xavfsiz bank ilovasiga taqlid tarzda ishlovchi tizim.",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start": "node src/server.js",
+    "start:dev": "nodemon src/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Zoyirov Diyorbek",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.9"

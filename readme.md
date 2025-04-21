@@ -1,120 +1,150 @@
-# Bankir App 💳
+# 🏦 Bankist App - Banking Server 💳
 
-**BankirApp** — bu foydalanuvchilarga hisoblar, tranzaksiyalar, qarzlar, investitsiyalar va kartalar bilan ishlash imkonini beruvchi qulay va xavfsiz bank ilovasiga taqlid tarzda ishlovchi tizim.
+**Bankist App** — bu kichik yoki o‘rta hajmdagi tijorat banklari uchun yaratilgan backend tizimi bo‘lib, foydalanuvchilarga moliyaviy hisoblar, tranzaksiyalar, qarzlar, investitsiyalar, kartalar va boshqa operatsiyalarni boshqarish imkonini beradi.
 
 ---
 
 ## 🎯 Loyihaning maqsadi:
 
-Bankir App - foydalanuvchilarga moliyaviy operatsiyalarni boshqarish, hisobotlarni ko'rish, pul o'tkazmalari qilish va investitsiyalarni kuzatish imkoniyatlarini taqdim etadi. Ilova foydalanuvchilarga shaxsiy moliyaviy holatini boshqarishda yordam beradi.
+Bankist App foydalanuvchilarga o‘z bank hisoblarini xavfsiz, tezkor va qulay boshqarish imkonini beruvchi backend platformani yaratishni maqsad qilgan. Bu tizim moliyaviy xizmatlarni raqamlashtirish orqali mijozlar tajribasini oshiradi.
 
 ---
 
-## ✅ Funksional talablar:
+## ✅ Asosiy funksiyalar:
 
-- **Foydalanuvchi ro‘yxatdan o‘tishi, tizimga kirishi, profilini tahrirlashi va parolini tiklashi mumkin.**
-- **Hisoblar**: Foydalanuvchilar o'z hisoblarini yaratish, boshqarish va tranzaksiyalarni amalga oshirishlari mumkin.
-- **Tranzaksiyalar**: Foydalanuvchilar pul o'tkazmalari, balansni tekshirish, va to'lovlarni amalga oshirishi mumkin.
-- **Investitsiyalar**: Foydalanuvchilar investitsiya qilish va ularning holatini ko‘rishlari mumkin.
-- **Kartalar**: Foydalanuvchilar o'zlarining debet va kredit kartalarini boshqarishlari mumkin.
-- **Hisob-kitoblar**: Foydalanuvchilar har bir oylik hisob-kitoblarni ko‘rish va hisob raqamlarini tekshirishlari mumkin.
-- **Xavfsizlik**: JWT asosida autentifikatsiya va ikki faktorli autentifikatsiya.
-- **Email xabarlar**: Parolni tiklash va tizimga kirishda foydalanuvchilarga xabar yuborish.
-- **Admin paneli**: Adminlar tizimni boshqarish va foydalanuvchilarni ko‘rish imkoniyatiga ega.
+- 🔐 **Foydalanuvchi autentifikatsiyasi**: JWT orqali tizimga kirish, ro‘yxatdan o‘tish, parolni tiklash.
+- 💰 **Hisoblar**: Yangi hisob yaratish, mavjud balansni ko‘rish, hisob turlarini boshqarish.
+- 🔄 **Tranzaksiyalar**: Pul o‘tkazmalari, balanslararo operatsiyalar.
+- 📈 **Investitsiyalar**: Investitsiya kiritish va ularning holatini monitoring qilish.
+- 💳 **Kartalar**: Kredit va debet kartalarni boshqarish.
+- 📊 **Hisobotlar**: Moliyaviy hisob-kitoblar va foydalanuvchi faoliyati haqida hisobotlar.
+- 📬 **Email xabarlar**: Xavfsizlik va bildirishnomalar uchun elektron pochta xabarlari.
+- 🛠 **Admin panel**: Foydalanuvchilarni kuzatish va boshqarish imkoniyati.
 
 ---
 
 ## 📦 Nofunksional talablar:
 
-- **Xavfsizlik**: JWT asosida autentifikatsiya va ikki faktorli autentifikatsiya.
-- **Tezkorlik**: Ilova iloji boricha minimal javob vaqtida ishlashi kerak.
-- **Kengayuvchanlik**: Yangi funksiyalar qo‘shishga tayyor tizim arxitekturasi.
-- **Spamni oldini olish**: Bu haqida izlanishlar olib bborilmoqda.
+- 🔒 **Xavfsizlik**: JWT va 2FA (ikki faktorli autentifikatsiya) orqali himoya.
+- ⚡ **Samaradorlik**: Yaxshi optimallashtirilgan va tez ishlovchi tizim.
+- 🧩 **Kengayuvchanlik**: Yangi imkoniyatlar uchun mos arxitektura.
+- 🚫 **Spamdan himoya**: Email va SMS orqali spamga qarshi chora-tadbirlar.
 
 ---
 
-## 🧩 Ma'lumotlar bazasi modellari
+## 🧾 Ma'lumotlar bazasi modellari
 
-1. **User**
-   - id,
-   - name,
-   - email,
-   - password,
-   - role (user/admin),
-   - avatarUrl,
-   - createdAt,
-   - updatedAt;
-
-2. **Account**
-   - id,
-   - userId, 
-   - balance.
-   - accountType (checking/savings),
-   - createdAt,
-   - updatedAt;
-
-3. **Transaction**
-   - id, 
-   - fromAccountId,
-   - toAccountId,
-   - amount,
-   - transactionDate,
-   - status (completed/pending),
-   - createdAt,
-   - updatedAt;
-
-4. **Repayment**
-   - id,
-   - amount,
-   - repaymentDate,
-   - createdAt,
-   - updatedAt;
-
-5. **Investment**
-   - id,
-   - userId,
-   - accountId,
-   - investmentAmount,
-   - investmentDate,
-   - status (active/closed),
-   - createdAt,
-   - updatedAt;
-
-6. **Card**
-   - id,
-   - userId,
-   - accountId,
-   - cardType (debit/credit),
-   - cardNumber,
-   - expirationDate,
-   - createdAt,
-   - updatedAt;
+### 👤 `User`
+| Maydon          | Tip                        |
+|-----------------|----------------------------|
+| id              | int (Primary Key)          |
+| name            | varchar(255)               |
+| email           | varchar(255, Unique)       |
+| password        | varchar(255)               |
+| role            | enum('user', 'admin')      |
+| avatarUrl       | varchar(255, nullable)     |
+| createdAt       | timestamp                  |
+| updatedAt       | timestamp                  |
 
 ---
 
-## 🌟 Qo'shimcha funksiyalar:
-
-- **Notification tizimi**: Tranzaksiyalar yoki qarz to'lovlari haqida bildirishnomalar.
-- **Dark mode**: Qorong'u rejim qo'llab-quvvatlashi.
-- **Hisob-kitoblar va hisobotlar**: Oylik moliyaviy hisobotlar va xarajatlar tahlili.
-
-## 🛠️ Texnologiyalar:
-
-
-
-- **Ma'lumotlarni qidirish**: Elasticsearch
----
-
-## 🏗️ Loyiha bo'yicha kelgusidagi rejalar:
-
-1. Admin panelni yanada kengaytirish va yaxshilash.
-2. Kredit va investitsiya variantlari uchun ko'p tilli qo'llab-quvvatlash.
-3. Foydalanuvchi tajribasini oshirish uchun optimallashtirish.
-4. Hisoblar bo‘yicha integratsiya (masalan, banklar bilan).
-5. Mobil ilova yaratish.
+### 🏦 `Account`
+| Maydon          | Tip                              |
+|-----------------|----------------------------------|
+| id              | int (Primary Key)                |
+| userId          | int (Foreign Key → User.id)      |
+| balance         | decimal                          |
+| accountType     | enum('checking', 'savings')      |
+| createdAt       | timestamp                        |
+| updatedAt       | timestamp                        |
 
 ---
 
-## 💡 Foydalanuvchilarni boshqarish:
+### 🔄 `Transaction`
+| Maydon          | Tip                                  |
+|-----------------|--------------------------------------|
+| id              | int (Primary Key)                    |
+| fromAccountId   | int (Foreign Key → Account.id)       |
+| toAccountId     | int (Foreign Key → Account.id)       |
+| amount          | decimal                              |
+| transactionDate | timestamp                            |
+| status          | enum('completed', 'pending')         |
+| createdAt       | timestamp                            |
+| updatedAt       | timestamp                            |
 
-Adminlar foydalanuvchi ro‘yxatini ko‘rib chiqishi, foydalanuvchilarni bloklashi yoki ularga huquqlar berishi mumkin.
+---
+
+### 💸 `Repayment`
+| Maydon          | Tip          |
+|-----------------|--------------|
+| id              | int (Primary Key) |
+| amount          | decimal      |
+| repaymentDate   | timestamp    |
+| createdAt       | timestamp    |
+| updatedAt       | timestamp    |
+
+---
+
+### 📈 `Investment`
+| Maydon            | Tip                                  |
+|-------------------|--------------------------------------|
+| id                | int (Primary Key)                    |
+| userId            | int (Foreign Key → User.id)          |
+| accountId         | int (Foreign Key → Account.id)       |
+| investmentAmount  | decimal                              |
+| investmentDate    | timestamp                            |
+| status            | enum('active', 'closed')             |
+| createdAt         | timestamp                            |
+| updatedAt         | timestamp                            |
+
+---
+
+### 💳 `Card`
+| Maydon          | Tip                                  |
+|-----------------|--------------------------------------|
+| id              | int (Primary Key)                    |
+| userId          | int (Foreign Key → User.id)          |
+| accountId       | int (Foreign Key → Account.id)       |
+| cardType        | enum('debit', 'credit')              |
+| cardNumber      | varchar(255, Unique)                 |
+| expirationDate  | date                                 |
+| createdAt       | timestamp                            |
+| updatedAt       | timestamp                            |
+
+---
+
+## 🌟 Qo'shimcha funksiyalar
+
+- 🔔 **Bildirishnomalar**: Tranzaksiyalar, investitsiyalar va qarzlar bo‘yicha real vaqtda xabarnomalar.
+- 🌙 **Dark Mode**: Qorong‘i rejimni qo‘llab-quvvatlash.
+- 📉 **Moliyaviy tahlil**: Oylik sarf-harajatlar bo‘yicha hisobotlar.
+- 🚫 **Spam nazorati**: Soxta foydalanuvchi va xabarlarga qarshi himoya.
+
+---
+
+## 🛠️ Texnologiyalar
+
+| Yo‘nalish            | Texnologiyalar                           |
+|----------------------|-------------------------------------------|
+| Backend              | Node.js, Express.js                       |
+| Ma’lumotlar bazasi   | MySQL yoki PostgreSQL                     |
+| Autentifikatsiya     | JWT, Bcrypt.js                            |
+| Fayl yuklash         | Multer                                    |
+| Email xabarlar       | Nodemailer                                |
+| Xavfsizlik           | Two-Factor Authentication (2FA)           |
+| Qidiruv              | Elasticsearch (kelgusida)                 |
+
+---
+
+## 🏗️ Kelajakdagi rejalar
+
+1. 🧮 Admin panelni kengaytirish va statistik tahlillarni qo‘shish.
+2. 🌍 Ko‘p tilli qo‘llab-quvvatlash (Multi-language).
+3. 📱 Mobil ilovalar bilan sinxronlash.
+4. 🔌 Boshqa bank API tizimlari bilan integratsiya.
+5. 🤖 AI asosida moliyaviy maslahatlar tizimi.
+
+
+---
+
+> Ushbu loyiha o‘quv maqsadida ishlab chiqilgan bo‘lib, haqiqiy bank muhitida ishlatishdan oldin qo‘shimcha xavfsizlik tekshiruvlari o‘tkazilishi tavsiya etiladi.
